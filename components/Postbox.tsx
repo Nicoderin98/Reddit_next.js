@@ -41,7 +41,7 @@ function Postbox() {
         <LinkIcon className='h-6 text-gray-300'/>
       </div>
 
-      {!watch('postTitle') && (
+      {!!watch('postTitle') && (
         <div className='flex flex-col py-2'>
 
           <div className='flex item-center px-2'>
