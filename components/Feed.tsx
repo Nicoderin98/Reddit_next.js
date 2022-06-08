@@ -15,6 +15,7 @@ function Feed() {
       {posts?.map(post => (
         <Post key={post.id} post={post} />
         ))}
+        ciao
     </div>
   )
 }
