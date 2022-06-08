@@ -17,7 +17,6 @@ mutation MyMutation(
   )
  {
   body
-  created_at
   id
   image
   subreddit_id
@@ -31,7 +30,6 @@ export const ADD_SUBREDDIT = gql`
     insertSubreddit(topic: $topic) {
       id
       topic
-      created_at
     }
   }
 `

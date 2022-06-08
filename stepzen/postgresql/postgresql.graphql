@@ -175,7 +175,6 @@ type Mutation {
   insertPost(
     image: String!
     body: String!
-    created_at: DateTime!
     subreddit_id: ID!
     title: String!
     username: String!
@@ -195,7 +194,7 @@ type Mutation {
       dml: DELETE
       configuration: "postgresql_config"
     )
-  insertSubreddit(created_at: DateTime!, topic: String!): Subreddit
+  insertSubreddit( topic: String!): Subreddit
     @dbquery(
       type: "postgresql"
       schema: "public"
