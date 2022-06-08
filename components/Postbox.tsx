@@ -36,29 +36,29 @@ function Postbox() {
     const notification = toast.loading("Creating new post...")
     try {
       const {
-        data: {getSubredditListByTopic},
+        data: { getSubredditListByTopic },
       } = await client.query({
         query: GET_SUBREDDIT_BY_TOPIC,
         variables: {
-          topic: formData.subreddit
-        }
-      }
+          topic: formData.subreddit,
+        },
+      })
 
-      )
-      const subredditExist = getSubredditListByTopic.length > 0;
+      const subredditExist = getSubredditListByTopic.length > 0
+
       if (!subredditExist){
 
         console.log("Subreddit is new! -> Creating a NEW subreddit!")
-        const {data: {insertSubreddit: newSubreddit}} = await addSubreddit({
+        const {data: {insertSubreddit: newSubreddit},} = await addSubreddit({
           variables: {
-            topic: formData.subreddit
-          }
+            topic: formData.subreddit,
+          },
         })
-        console.log("Creating post...", formData)
+        console.log('Creating post...', formData)
         const image = formData.postImage || ''
 
         const {data: {insertPost: newPost},
-        }= await addPost({
+        } = await addPost({
           variables: {
             body:formData.postBody,
             image: image,
@@ -75,9 +75,9 @@ function Postbox() {
         console.log(getSubredditListByTopic)
         const image = formData.postImage || ''
 
-        const {data: {instaPost: newPost}} = await addPost({
+        const {data: {insertPost: newPost},} = await addPost({
           variables: {
-          body:formData.postBody,
+          body: formData.postBody,
           image: image,
           subreddit_id: getSubredditListByTopic[0].id,
           title: formData.postTitle,
@@ -95,6 +95,7 @@ function Postbox() {
         id: notification
       })
     } catch (error) {
+      console.error(error)
       toast.error("Whoops something went wrong!",{
         id: notification
       })

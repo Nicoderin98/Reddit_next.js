@@ -5,7 +5,7 @@ query MyQuery($topic: String!) {
   getSubredditListByTopic(topic: $topic) {
     id
     topic
-    create_at
+    created_at
   }
 }
 `

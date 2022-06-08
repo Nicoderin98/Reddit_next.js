@@ -111,9 +111,7 @@ type Query {
     @dbquery(
       type: "postgresql"
       schema: "public"
-      query: """
-      select * from "subreddit" where "topic" = $1
-      """
+      query: """select * from "subreddit" where "topic" = $1"""
       configuration: "postgresql_config"
     )
   getSubreddit(id: ID!): Subreddit
